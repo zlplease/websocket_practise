@@ -1,18 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import chat from '../views/chat.vue'
+import choose from '../views/choose.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    redirect: 'chat'
+    redirect: 'choose'
+  },
+  {
+    path: '/choose',
+    name: 'choose',
+    component: choose
   },
   {
     path: '/chat',
     name: 'chat',
-    component: Home
+    component: chat
   }
 ]
 const router = new VueRouter({

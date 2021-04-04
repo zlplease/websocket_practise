@@ -2,8 +2,7 @@
   <div id="app">
     <div class="chat">
       <div class="title">
-        <p>{{ otherName }}</p>
-        <button class="choose" @click="changeUser">切换用户</button>
+        <p>{{ othername }}</p>
       </div>
       <div class="chatView">
         <vuescroll :ops="ops">
@@ -34,6 +33,7 @@
 
 <script>
 import vuescroll from "vuescroll";
+import {mapState} from 'vuex';
 
 export default {
   name: "Home",
@@ -50,8 +50,6 @@ export default {
           background: "#c1c1c1",
         },
       },
-      uid: 2,
-      otherName: "涛",
       msg: "",
       msgList: [
         {
@@ -83,17 +81,12 @@ export default {
       ],
     };
   },
+  computed:mapState ({
+    uid:state=>state.uid,
+    nickname:state=>state.nickname,
+    othername:state=>state.othername
+  }),
   methods: {
-    changeUser() {
-      // console.log(res)
-      if (this.uid === 1) {
-        this.uid = 2;
-        this.otherName = "涛";
-      } else {
-        this.uid = 1;
-        this.otherName = "鸿";
-      }
-    },
   },
 };
 </script>
@@ -127,26 +120,6 @@ export default {
       padding-left: 24px;
       font-weight: bold;
     }
-  }
-}
-
-.choose {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: 4%;
-  width: 12%;
-  height: 24px;
-  background-color: rgb(98, 128, 250);
-  border-radius: 40px;
-  border: none;
-  outline: none;
-  font-size: 10px;
-  color: white;
-  margin: 4px;
-  &:hover {
-    background-color: rgb(35, 77, 243);
   }
 }
 
