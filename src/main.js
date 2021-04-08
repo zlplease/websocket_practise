@@ -3,6 +3,17 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuescroll from 'vuescroll/dist/vuescroll-slide';
+import VueSocketIO from 'vue-socket.io'
+
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: '',
+  vuex: {
+      store,
+      actionPrefix: 'SOCKET_',
+      mutationPrefix: 'SOCKET_'
+  },
+}))
 
 Vue.use(vuescroll);
 
